@@ -1,0 +1,25 @@
+{
+  "name": "discord_bot_rpi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ts:node": "ts-node src/index.ts",
+    "start": "node build/src/index.js",
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf build/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "8.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.25",
+    "ts-node": "9.1.1",
+    "typescript": "4.1.3"
+  }
+}
