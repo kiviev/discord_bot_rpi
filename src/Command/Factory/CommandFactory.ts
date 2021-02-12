@@ -4,7 +4,7 @@ import CommandModule from "../Contracts/CommandModule";
 import ICommand from "../Contracts/ICommand";
 import NullCommand from "../NullCommand";
 import PongCommand from "../PongCommand";
-import LedCommand from "../LedCommand";
+import LedCommand from "../module/Led/LedCommand";
 
 
 class CommandFactory{

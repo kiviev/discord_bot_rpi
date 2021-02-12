@@ -1,9 +1,9 @@
 import dotenv from 'dotenv';
+dotenv.config();
 
 import Discord from 'discord.js';
 import MessageManager from './Message/Manager/MessageManager';
 
-dotenv.config();
 
 const client = new Discord.Client();
 
