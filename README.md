@@ -1,4 +1,4 @@
-# Discord Bot Template in Typescript
+# Discord Bot Base in Typescript
 
 ### How to install:
 ```
