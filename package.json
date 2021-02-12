@@ -6,7 +6,7 @@
   "scripts": {
     "ts:node": "ts-node src/index.ts",
     "start": "node build/src/index.js",
-    "start:dev": "npm run ts:node",
+    "start:dev": "nodemon",
     "build": "npm run clean && tsc",
     "clean": "rm -rf build/",
     "test": "echo \"Error: no test specified\" && exit 1"
