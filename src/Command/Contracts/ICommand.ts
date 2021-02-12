@@ -5,10 +5,13 @@ import MessageBot from "../../Message/MessageBot";
 interface ICommand{
 
     name: string;
+    action?: string;
     args?: string[];
     msg: MessageBot;
 
-    exec():void;
+    handleAction(): void;
+
+    exec(): void;
 
 }
 

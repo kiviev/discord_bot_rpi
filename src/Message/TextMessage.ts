@@ -1,5 +1,5 @@
 import MessageBot from "./MessageBot";
-import CommandFactory from '../Command/CommandFactory';
+import CommandFactory from '../Command/Factory/CommandFactory';
 import IMessage from './Contracts/IMessage'
 import ITextMessage from './Contracts/ITextMessage'
 

@@ -7,7 +7,7 @@ module CommandModule {
         actions: {}
     }; 
 
-    export const RELAY = {
+    export const LED = {
         trigger: 'led',
         actions: {
             on: 'on',

@@ -1,10 +1,10 @@
 
-import MessageBot from "../Message/MessageBot";
-import CommandModule from "./Contracts/CommandModule";
-import ICommand from "./Contracts/ICommand";
-import NullCommand from "./Command/NullCommand";
-import PongCommand from "./Command/PongCommand";
-import LedCommand from "./Command/LedCommand";
+import MessageBot from "../../Message/MessageBot";
+import CommandModule from "../Contracts/CommandModule";
+import ICommand from "../Contracts/ICommand";
+import NullCommand from "../NullCommand";
+import PongCommand from "../PongCommand";
+import LedCommand from "../LedCommand";
 
 
 class CommandFactory{
@@ -14,6 +14,8 @@ class CommandFactory{
     prefix: string = CommandModule.PREFIX;
 
     content: string;
+    
+    action: string = '';
 
     args: string[];
 
@@ -37,8 +39,8 @@ class CommandFactory{
             case CommandModule.PING.trigger:
                 result = new PongCommand(this.msg);
                 break;
-            case CommandModule.RELAY.trigger:
-                result = new LedCommand(this.msg,this.args);
+            case CommandModule.LED.trigger:
+                result = new LedCommand(this.msg, this.action, this.args);
                 break;
         
             default:
@@ -61,8 +63,14 @@ class CommandFactory{
 
         let words = this.content.split(' ');
         const firstWord = words[0];
+        const secondWord = words[1] ? words[1] : '';
         if(firstWord && firstWord.startsWith(this.prefix)){
             this.commandName = firstWord.substr(this.prefix.length);
+            words.shift();
+        }
+
+        if(secondWord){
+            this.action = secondWord;
             words.shift();
             args = words;
         }

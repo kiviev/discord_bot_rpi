@@ -1,43 +1,41 @@
-import MessageBot from "../../Message/MessageBot";
-import CommandModule from "../Contracts/CommandModule";
-import ICommand from "../Contracts/ICommand";
+import MessageBot from "../Message/MessageBot";
+import CommandModule from "./Contracts/CommandModule";
+import ICommand from "./Contracts/ICommand";
 
 
 class LedCommand implements ICommand
 {
-    name: string = 'LedCommand';
+    name: string = 'Led';
     msg: MessageBot;
+    action: string;
     args: string[];
 
-    actionName: string;
 
-    constructor(msg: MessageBot, args: string[]){
+    constructor(msg: MessageBot, action: string = '', args: string[] = []){
         this.msg = msg;
-        this.actionName = args[0] ? args[0].toLowerCase() : '';
-        
-        args.shift();
+        this.action = action.toLowerCase();
         this.args = args;
     }
 
     exec(): void {
-        this.msg.reply('Domotica Led')
+        this.msg.reply('Domotic Led')
         this.handleAction();
 
     }
 
     handleAction(): void 
     {
-        switch (this.actionName) {
-            case CommandModule.RELAY.actions.on:
+        switch (this.action) {
+            case CommandModule.LED.actions.on:
                 this.on()
                 break;
-            case CommandModule.RELAY.actions.off:
+            case CommandModule.LED.actions.off:
                 this.off()
                 break;
-            case CommandModule.RELAY.actions.config:
+            case CommandModule.LED.actions.config:
                 this.config()
                 break;
-            case CommandModule.RELAY.actions.setconfig:
+            case CommandModule.LED.actions.setconfig:
                 this.setConfig()
                 break;
        
@@ -58,9 +56,9 @@ class LedCommand implements ICommand
         const hour = this.args[0];
 
         if(this.checkHourFormat(hour)){
-            this.msg.reply('hora bien: ' +  hour)
+            this.msg.reply('Hour OK: ' +  hour)
         }else{
-            this.msg.reply('hora mal: ' +  hour)
+            this.msg.reply('Bad hour format: ' +  hour)
         }
 
     }
@@ -68,14 +66,14 @@ class LedCommand implements ICommand
 
     off(): void
     {
-         this.msg.reply('off');
+        this.msg.reply('off');
 
-             const hour = this.args[0];
+        const hour = this.args[0];
         
         if(this.checkHourFormat(hour)){
-            this.msg.reply('hora bien: ' +  hour)
+            this.msg.reply('Hour OK: ' +  hour)
         }else{
-            this.msg.reply('hora mal: ' +  hour)
+            this.msg.reply('Bad hour format: ' +  hour)
         }
     }
 
