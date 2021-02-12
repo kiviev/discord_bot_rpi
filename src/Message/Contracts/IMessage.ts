@@ -1,11 +1,10 @@
 import { DiscordAPIError } from "discord.js";
-
-import {Message} from 'discord.js'
+import MessageBot from "../MessageBot";
 
 interface IMessage{
     
     type: string;
-    msg: Message;
+    msg: MessageBot;
 
     handleMessage(): void
 }

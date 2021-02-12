@@ -1,4 +1,4 @@
-import { Message } from "discord.js";
+import MessageBot from "../../Message/MessageBot";
 import CommandModule from "../Contracts/CommandModule";
 import ICommand from "../Contracts/ICommand";
 
@@ -6,12 +6,12 @@ import ICommand from "../Contracts/ICommand";
 class LedCommand implements ICommand
 {
     name: string = 'LedCommand';
-    msg: Message;
+    msg: MessageBot;
     args: string[];
 
     actionName: string;
 
-    constructor(msg: Message, args: string[]){
+    constructor(msg: MessageBot, args: string[]){
         this.msg = msg;
         this.actionName = args[0] ? args[0].toLowerCase() : '';
         

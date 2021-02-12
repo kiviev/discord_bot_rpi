@@ -1,4 +1,4 @@
-import {Message} from 'discord.js'
+import MessageBot from "../MessageBot";
 import IMessage from '../Contracts/IMessage';
 import NullMessage from '../NullMessage';
 import TextMessage from '../TextMessage';
@@ -6,11 +6,11 @@ import TextMessage from '../TextMessage';
 
 class MessageManager
 {
-    private msg: Message;
+    private msg: MessageBot;
 
     private message: IMessage;
 
-    constructor(msg :Message)
+    constructor(msg :MessageBot)
     {
         this.msg = msg;
         this.message = this.buildMessage();

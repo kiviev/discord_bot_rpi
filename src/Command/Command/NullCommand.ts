@@ -1,14 +1,14 @@
-import { Message } from "discord.js";
+import MessageBot from "../../Message/MessageBot";
 import ICommand from "../Contracts/ICommand";
 
 
 class NullCommand implements ICommand
 {
     name: string = 'NullCommand';
-    msg: Message;
+    msg: MessageBot;
     args?: string[];
 
-    constructor(msg: Message){
+    constructor(msg: MessageBot){
         this.msg = msg;
     }
 

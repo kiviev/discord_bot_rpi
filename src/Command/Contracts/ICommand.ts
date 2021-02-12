@@ -1,11 +1,12 @@
-import { Message } from "discord.js";
+import MessageBot from "../../Message/MessageBot";
+
 
 
 interface ICommand{
 
     name: string;
     args?: string[];
-    msg: Message;
+    msg: MessageBot;
 
     exec():void;
 

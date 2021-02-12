@@ -1,20 +1,19 @@
-import { Message } from "discord.js";
+import MessageBot from "../../Message/MessageBot";
 import ICommand from "../Contracts/ICommand";
 
 
 class PongCommand implements ICommand
 {
     name: string = 'Pong';
-    args: string[];
-    msg: Message;
+    args?: string[];
+    msg: MessageBot;
 
-    constructor(msg: Message, args: string[]){
+    constructor(msg: MessageBot){
         this.msg = msg;
-        this.args = args;
     }
 
     exec(): void {
-        this.msg.reply('pongito ' + this.args.join(' '));
+        this.msg.reply('Pong');
     }
 
 }

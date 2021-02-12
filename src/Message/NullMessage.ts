@@ -1,14 +1,14 @@
-import { Message } from 'discord.js';
+import MessageBot from "./MessageBot";
 import IMessage from './Contracts/IMessage'
 import ITextMessage from './Contracts/ITextMessage'
 
 class NullMessage implements IMessage, ITextMessage 
 {
     type: string = 'text';
-    msg: Message;
+    msg: MessageBot;
     content: string;
 
-    constructor(msg: Message){
+    constructor(msg: MessageBot){
         this.msg = msg;
         this.content = '';
         this.handleMessage();

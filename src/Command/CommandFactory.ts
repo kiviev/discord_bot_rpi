@@ -1,4 +1,5 @@
-import { Message } from "discord.js";
+
+import MessageBot from "../Message/MessageBot";
 import CommandModule from "./Contracts/CommandModule";
 import ICommand from "./Contracts/ICommand";
 import NullCommand from "./Command/NullCommand";
@@ -8,7 +9,7 @@ import LedCommand from "./Command/LedCommand";
 
 class CommandFactory{
 
-    msg: Message;
+    msg: MessageBot;
 
     prefix: string = CommandModule.PREFIX;
 
@@ -20,7 +21,7 @@ class CommandFactory{
 
     command: ICommand;
 
-    constructor(msg: Message){
+    constructor(msg: MessageBot){
         this.msg = msg;
         this.content = this.msg.content.trim();
         this.args = this.getArgs();
@@ -34,7 +35,7 @@ class CommandFactory{
         let result = null;
         switch (this.commandName) {
             case CommandModule.PING.trigger:
-                result = new PongCommand(this.msg, this.args);
+                result = new PongCommand(this.msg);
                 break;
             case CommandModule.RELAY.trigger:
                 result = new LedCommand(this.msg,this.args);
