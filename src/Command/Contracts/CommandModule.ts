@@ -13,7 +13,8 @@ module CommandModule {
             on: 'on',
             off: 'off',
             config: 'config',
-            setconfig: 'setconfig'
+            setconfig: 'setconfig',
+            status: 'status'
         }
     }; 
 }

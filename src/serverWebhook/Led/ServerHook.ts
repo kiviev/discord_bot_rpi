@@ -12,7 +12,19 @@ class ServerHook
     public static async setLedStatus(ledId: number, on: boolean = false): Promise<AxiosResponse>
     {
         const uri: string = this.baseUrl + '/gpio/pin/' + ledId + '/set-status/' + (on ? 'on': 'off');
-        console.log(uri)
+
+        const response = await axios.get(uri,{
+            headers: this.getHeaders()
+
+        })
+        return response;
+    }
+
+
+    public static async getLedStatus(ledId: number): Promise<AxiosResponse>
+    {
+        const uri: string = this.baseUrl + '/gpio/pin/' + ledId;
+
         const response = await axios.get(uri,{
             headers: this.getHeaders()
 

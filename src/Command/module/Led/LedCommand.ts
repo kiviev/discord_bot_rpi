@@ -22,7 +22,7 @@ class LedCommand implements ICommand
 
     exec(): void 
     {
-        this.msg.reply('Domotic Led')
+        // this.msg.reply('Domotic Led')
         this.handleAction();
 
     }
@@ -42,6 +42,9 @@ class LedCommand implements ICommand
             case CommandModule.LED.actions.setconfig:
                 this.setConfig()
                 break;
+            case CommandModule.LED.actions.status:
+                this.getStatus()
+                break;
        
             default:
                 break;
@@ -59,9 +62,8 @@ class LedCommand implements ICommand
            
         response.then((response: any) => {
             const data: ILedSetStatus = response.data;
-            console.log(data)
-            this.msg.reply('on');
-            this.msg.reply(data.on.toString())
+         
+             this.msg.reply(`On`);
         })
         .catch(e => console.error(e));
 
@@ -83,9 +85,23 @@ class LedCommand implements ICommand
            
         response.then((response: any) => {
             const data: ILedSetStatus = response.data;
-            console.log(data)
-            this.msg.reply('off');
-            this.msg.reply(data.on.toString())
+
+            this.msg.reply(`Off`);
+        })
+        .catch(e => console.error(e));
+        
+    }
+
+
+
+    getStatus(): void
+    {
+        let response = ServerHook.getLedStatus(PINID);
+           
+        response.then((response: any) => {
+            const data: ILedSetStatus = response.data;
+            let msg = `Status: ${data.on ? 'Encendido' : 'Apagado'}`
+            this.msg.reply(msg)
         })
         .catch(e => console.error(e));
         
